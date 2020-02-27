@@ -1,0 +1,16 @@
+
+# latex
+
+*.aux
+*.fls
+*.log
+*.out
+*.fdb_latexmk
+*.gz
+*.toc
+
+# notebooks
+*.ipynb_checkpoints
+# misc
+
+**/.DS_Store
