@@ -1,3 +1,5 @@
+# directories
+manuscripts/Images
 
 # latex
 
@@ -9,8 +11,10 @@
 *.gz
 *.toc
 
+
 # notebooks
 *.ipynb_checkpoints
+
 # misc
 
-**/.DS_Store
+.DS_Store
