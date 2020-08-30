@@ -73,6 +73,8 @@ Now looking at \cref{DifDef}, we see that the quotient
 	\end{tikzpicture}
 \end{center}
 
+%% Consider replacing with a Julia or Python function.
+
 The picture above shows that as $h$ decreases, $\frac{f(a+h)-f(a)}{h}$ begins to resemble the slope of the line tangent to $f(x)$ at $a$. This shows us that the derivative gives us information about the \emph{rate of change} of a function.\\
 
 Motivated by the above picture, we see that if we let $x=a+h$, then our definition of the derivative is equivalent to the following one.
@@ -113,7 +115,7 @@ Instead of taking the derivative at every single point $a$ that we're interested
 %% Add figure for this circle with $h$
 
 
-This technique is useful in a lot more cases, so we'll try to generalize this idea a bit. If we have a function $f(x)$ and can find another function that gives us the derivative of $f$ at any point $x$, we simply call it \emph{the derivative of $f$} (without mentioning a specific point). Keeping our notation consistent, we'll write this function as $f'(x)$ or $\diff{f}{x}$! This can be a little confusing at first, but the point is that the derivative of $f$ at a point $a$ is a number $f'(a)$, and the derivative of $f$ is another function $f'$.
+This technique is useful in a lot more cases, so we'll try to generalize this idea a bit. If we have a function $f(x)$ and can find another function that gives us the derivative of $f$ at any point $x$, we simply call it \emph{the derivative of $f$} (without mentioning a specific point). Keeping our notation consistent, we'll write this function as $f'(x)$ or $\diff{f}{x}$! This can be a little confusing at first, but the point is that the derivative of $f$ at a point $a$ is a number $f'(a)$, and the derivative of $f$ is another function $f'$.\\
 
 When we write it in this way, we can find that the derivative as we defined it has some very nice properties which will make the actual process computing derivatives much easier. You'll notice that several of the properties shown below resemble properties of limits which makes sense since we defined the derivative in terms of limits. These properties also harken back to the limit properties of continuous functions and later, we'll see that all differentiable functions are also continuous.
 
@@ -186,11 +188,14 @@ f'(x) = \lim\limits_{h\to 0} \frac{f(x+h)-f(x)}{h} = 0.
 \]
 \end{proof}
 
-Moving onto the non-constant polynomials, the scalar multiplication and sum rules from above (\label{SMultSumDiff}) tell us that we only need to be able to find the derivative of each $x^k$ to find the derivative of $f(x)$.
+Moving onto the non-constant polynomials, the scalar multiplication and sum rules from above (\cref{SMultSumDiff}) tell us that we only need to be able to find the derivative of each $x^k$ to find the derivative of $f(x)$.
 
 \begin{prop}[Power Rule]\label{PowRule}
 	If $f(x)=x^n$ for any non-zero number $n$, then the derivative of $f$ is  $f'(x)=nx^{n-1}$.
 \end{prop}
+
+If you're unfamiliar with finite sums, you can skip the proof of this section until (insert chapter here).
+
 \begin{proof}
 	We start with the definition of the derivative and substitute in our function $f$ i.e.
 	\begin{equation}
@@ -253,16 +258,13 @@ This still doesn't answer the question of differentiation. Let's set up this que
 \[
 (f\circ g)'(t) = \frac{df}{dt}.
 \]
-Going back to most basic idea behind the derivative, we know that $f'(x) = \diff{f}{x}$ tells us the rate of change of $f$ as we move near $x$. Therefore, the derivative $f'(g(t))$ should tell us the rate of change near $g(t)$, but since $g$ itself is a function, we must account for the change in $g(t)$ near $t$ i.e. $\diff{g}{t}$. Since $g$ is acting as our input $x$, we can write its derivative as $\diff{x}{t}$.
+Going back to most basic idea behind the derivative, we know that $f'(x) = \diff{f}{x}$ tells us the rate of change of $f$ as we move near $x$. Therefore, the derivative $f'(g(t))$ should tell us the rate of change near $g(t)$, but since $g$ itself is a function, we must account for the change in $g(t)$ near $t$ i.e. $\diff{g}{t}$. Since $g$ is acting as our input $x$, we can write its derivative as $\diff{x}{t}$. Intuititively, we can write this as
 
-DONT DO THIS YOURseLF
 \[
 \diff{f}{t} = \diff{f}{x} \diff{x}{t}.
 \]
 
-Handwavely, but the equation is ...
-
-Write as proposition.
+Though this is not technically rigorous, it is a good heuristic for thinking about this idea composed functions. If function inputs depend on other functions, we must deal with products of their derivatives. This is explained formally by the chain rule below.
 
 \begin{prop}[The Chain Rule]
 If $f$ is differentiable at $g(t)$ and $g$ is differentible at $t$, then the derivative of $f\circ g$ is
@@ -271,8 +273,11 @@ If $f$ is differentiable at $g(t)$ and $g$ is differentible at $t$, then the der
 \]
 \end{prop}
 \begin{rem}
-I often remember this as `the derivative of the inside function times the outside function'.
+Personally, I remember the right hand side of this equation as `the derivative of the inside function times the outside function'.
 \end{rem}
+
+%% Figure out how to describe the chain rule in a figure
+
 %%% ive sin and cos as exercise with the trig rule and limit rule as hints
 
 %% Differentiation Exercises
@@ -292,29 +297,29 @@ Compute the derivative $f'(x)$ for the following functions:
   \item \label{DifEA8} $f(x) = e^{-6x}\ln(x)$
 \end{enumerate}
 
-\textbf{Example A.1.}
+\textbf{Solution A.1.}
 
-Since we're differentiating a sum, we can take the derivative of each of its parts! Using the power rule (\href{PowRule}), we see that the derivative of $x^5$ is $5x^4$, the derivative of $2x$ is $2$ and the derivative of $1$ is 0. This means that the derivative of $x^5 + 2x + 1$ is given by $5x^4 + 2$.
+Since we're differentiating a sum, we can take the derivative of each of its parts! Using the power rule (\cref{PowRule}), we see that the derivative of $x^5$ is $5x^4$, the derivative of $2x$ is $2$ and the derivative of $1$ is 0. This means that the derivative of $x^5 + 2x + 1$ is given by $5x^4 + 2$.\\
 
-\textbf{Example A.2.}
+\textbf{Solution A.2.}
 
-This problem is an application of the chain rule (add citation) and the power rule! Using the $\sin(x)$ as the `inside' function ($g(x)$) and $x^3$ as the `outside' function $(f(x))$. Starting with the `outside' function $f$ we use the power rule to show
+This problem is an application of the chain rule (add citation) and the power rule! Using the $\sin(x)$ as the `inside' function $g(x)$ and $x^3$ as the `outside' function $f(x)$. Starting with the `outside' function $f$ we use the power rule to show
 \[
 f(x) = x^3 \xrightarrow{\diff{}{x}} f'(x) = 3x^2.
-\] by the power rule. Similarly, the derivative of $g(x) = \sin(x)$ is $g'(x) = \cos(x)$ by \cref{SinCosExpDif}. Following the chain rule formula, we can compute $f'(g(x)) = 3 \sin^2(x)$. Therefore, we write the derivative as $3\cos(x)\sin^2(x)$.
+\] by the power rule. Similarly, the derivative of $g(x) = \sin(x)$ is $g'(x) = \cos(x)$ by \cref{SinCosExpDif}. Following the chain rule formula, we can compute $f'(g(x)) = 3 \sin^2(x)$. Therefore, we write the derivative as $3\cos(x)\sin^2(x)$.\\
 
 %% Make align for the derivative $\diff{}{x}$ over arrow?
-\textbf{Example A.3.}
+\textbf{Solution A.3.}
 
-\textbf{Example A.4.}
+\textbf{Solution A.4.}
 
-\textbf{Example A.5.}
+\textbf{Solution A.5.}
 
-\textbf{Example A.6.}
+\textbf{Solution A.6.}
 
-\textbf{Example A.7.}
+\textbf{Solution A.7.}
 
-\textbf{Example A.8.}
+\textbf{Solution A.8.}
 
 \end{exmps}
 
